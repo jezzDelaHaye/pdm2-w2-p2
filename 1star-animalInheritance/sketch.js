@@ -1,4 +1,5 @@
-function setup() {
+function setup() 
+{
     createCanvas(0, 0);
 
     // Test your code by creating objects, calling their methods, and printing the output to the console
@@ -13,7 +14,8 @@ function setup() {
 /**
  * Represents an Animal
  */
-class Animal {
+class Animal 
+{
     #name;
     #healthLevel;
     #age;
@@ -27,7 +29,8 @@ class Animal {
      * @param {number} health A number between 0 and 100
      * @param {number} age 
      */
-    constructor(name, health, age) {
+    constructor(name, health, age) 
+    {
         this.#name = name;
         this.#healthLevel = health;
         this.#age = age;
@@ -41,7 +44,8 @@ class Animal {
      * Gets the animal's x coordinate
      * @returns {number}
      */
-    getX() {
+    getX() 
+    {
         return this.#posX;
     }
 
@@ -50,7 +54,8 @@ class Animal {
      * Gets the animal's y coordinate
      * @returns {number}
      */
-    getY() {
+    getY() 
+    {
         return this.#posY;
     }
 
@@ -59,7 +64,8 @@ class Animal {
      * Returns the animal's health level.
      * @returns {number}
      */
-    getHealthLevel() {
+    getHealthLevel() 
+    {
         return this.#healthLevel;
     }
 
@@ -67,7 +73,8 @@ class Animal {
     /**
      * Decreases the animal's health. The health level cannot fall below 0.
      */
-    decreaseHealth() {
+    decreaseHealth() 
+    {
         this.#healthLevel = Math.max(0, this.#healthLevel - 1);
     }
 
@@ -76,7 +83,8 @@ class Animal {
      * Gets the animal's age
      * @returns {number}
      */
-    getAge() {
+    getAge() 
+    {
         return this.#age;
     }
 
@@ -85,7 +93,8 @@ class Animal {
      * Returns a message from the animal
      * @returns {string}
      */
-    call() {
+    call() 
+    {
         return `Hello, my name is ${this.#name}`;
     }
 
@@ -94,7 +103,8 @@ class Animal {
      * Move the animal to the given x position
      * @param {number} newPosX The new x position
      */
-    moveX(newPosX) {
+    moveX(newPosX) 
+    {
         this.#posX = newPosX;
     }
 
@@ -103,7 +113,8 @@ class Animal {
      * Move the animal to the given y position
      * @param {number} newPosY The new y position
      */
-    moveY(newPosY) {
+    moveY(newPosY) 
+    {
         this.#posY = newPosY;
     }
 }
@@ -112,10 +123,12 @@ class Animal {
 /**
  * A subclass representing animals with fur
  */
-class FurryAnimal extends Animal {
+class FurryAnimal extends Animal 
+{
     #furColour;
 
-    constructor(name, health, age, colour) {
+    constructor(name, health, age, colour) 
+    {
         super(name, health, age);
         this.#furColour = colour;
     }
@@ -125,7 +138,70 @@ class FurryAnimal extends Animal {
      * Gets the animal's fur colour.
      * @returns {Color}
      */
-    getFurColour() {
+    getFurColour() 
+    {
         return this.#furColour;
+    }
+}
+
+class Bird extends Animal
+{
+    #beakType;
+
+    constructor(name, health, age, type)
+    {
+        super(name, health, age)
+        this.#beakType = type;
+    }
+
+    getBeakType()
+    {
+        return this.#beakType;
+    }
+
+    decreaseHealth() 
+    {
+        super.decreaseHealth()
+        super.decreaseHealth()
+        super.decreaseHealth()
+        super.decreaseHealth()
+        super.decreaseHealth()
+
+    }
+}
+
+class Cat extends FurryAnimal
+{
+    constructor(name, health, age, colour)
+    {
+        super(name, health, age, colour)
+    }
+
+    jumpAt(bird)
+    {
+        this.moveX(bird.getX()) 
+        this.moveY(bird.getY()) 
+        bird.decreaseHealth()
+    }
+
+    call()
+    {
+        return `meow`;
+    }
+}
+
+class Dog extends FurryAnimal
+{
+    constructor(name, health, age, colour)
+    {
+        super(name, health, age, colour)
+    }
+
+    barkAt(cat)
+    {
+        if (cat.posX === Dog.posX && cat.posY === Dog.posY) 
+        {
+            return 'Woof!'
+        }
     }
 }
